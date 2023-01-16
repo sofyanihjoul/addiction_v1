@@ -43,7 +43,7 @@ Widget signupSection = Column(
         ),
       ],
     ),
-    //create account (first name , lastname ,password , confirom password)
+    //create account (first name , lastname ,age, password , confirom password)
     Padding(
       padding: const EdgeInsets.fromLTRB(32, 3, 32, 5),
       child: TextFormField(
