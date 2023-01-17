@@ -1,4 +1,5 @@
 import 'package:addiction_app_v1/views/Home_page_view.dart';
+import 'package:addiction_app_v1/views/change_Your_think_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -91,7 +92,13 @@ class _MyDarwerState extends State<MyDarwer> {
           ListTile(
             leading: Icon(Icons.psychology),
             title: Text("Change Your Think"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const changeyourthink()),
+              );
+            },
           ),
         ],
       ),
