@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:addiction_app_v1/views/Question_Answer_view.dart';
 import 'package:addiction_app_v1/views/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import '../COMMON/loader.dart';
@@ -67,7 +68,21 @@ Widget QuestionAnswersectoion(BuildContext context) => Center(
                               onTap: () async {
                                 model.addictionTypeId = snapshot
                                     .data!.data![index]!.addictionTypeId;
-                                await registerUser(model);
+                                var response = await registerUser(model);
+                                if (response != null) {
+                                  if (response.isSuccess!) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const QuestionAnswerPage()),
+                                    );
+                                  } else {
+                                    showToast(
+                                        false, response.messages[0]['message']);
+                                    response.messages[0]['message'];
+                                  }
+                                }
                               },
                               child: SizedBox(
                                   child: Card(

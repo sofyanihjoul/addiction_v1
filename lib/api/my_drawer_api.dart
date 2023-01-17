@@ -26,13 +26,18 @@ Future<Questionanswermodel?> getQuestionanswermodel() async {
 }
 
 //Post Answer
-Future<PostResponse?> registerUser(Questionanswermodel model) async {
+Future<PostResponse?> senduserAnswer(
+    int userId, int questionId, int answerId) async {
   var response = await http.post(
     Uri.parse("http://154.53.58.222:8889/api/AnswerdQuestion/Create"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, dynamic>{}),
+    body: jsonEncode(<String, dynamic>{
+      'userId': userId,
+      'questionId': questionId,
+      'answerId': answerId
+    }),
   );
 
   if (response.statusCode == 200) {

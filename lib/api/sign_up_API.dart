@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:addiction_app_v1/COMMON/constants.dart';
 import 'package:addiction_app_v1/Models/addiction_type_model.dart';
 import 'package:addiction_app_v1/Models/register_model.dart';
 import 'package:http/http.dart' as http;
@@ -49,7 +50,12 @@ Future<PostResponse?> registerUser(RegisterModel model) async {
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    return postResponseFromJson(response.body);
+    var res = postResponseFromJson(response.body);
+    if (res!.isSuccess!) {
+      StaticValues.userId = res.data!;
+    }
+
+    return res;
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.

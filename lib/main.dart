@@ -1,4 +1,5 @@
 import 'package:addiction_app_v1/views/Confirom_view.dart';
+import 'package:addiction_app_v1/views/Question_Answer_view.dart';
 import 'package:addiction_app_v1/views/guest_view.dart';
 import 'package:addiction_app_v1/views/Welcome.dart';
 import 'package:addiction_app_v1/views/change_Your_think_view.dart';
@@ -21,6 +22,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     //final w = MediaQuery.of(context).size.width;
 
-    return MaterialApp(home: confirompassword());
+    return MaterialApp(home: QuestionPage());
   }
 }
