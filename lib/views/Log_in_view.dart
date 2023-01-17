@@ -1,3 +1,4 @@
+import 'package:addiction_app_v1/COMMON/loader.dart';
 import 'package:addiction_app_v1/views/Forget_Password_view.dart';
 import 'package:addiction_app_v1/views/Home_page_view.dart';
 import 'package:addiction_app_v1/views/sign_up_view.dart';
@@ -7,6 +8,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'dart:ui' as ui;
+
+import '../api/sign_up_API.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -31,164 +34,192 @@ final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
 
 //BULID SECTION
 class _LoginPageState extends State<LoginPage> {
+  String email = "";
+  String password = "";
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffC6C7C9),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Stack(
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
                 children: [
-                  CustomPaint(
-                    painter: RPSCustomPainter(),
-                    child: Container(
-                      width: 1180.77,
-                      height: 278.91,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 160, 93, 0),
-                    child: Text(
-                      'Welcome back!',
-                      style: TextStyle(
-                          color: Color(0xffFFFFFF),
-                          fontSize: 36,
-                          fontFamily: 'Fonts/ZillaSlab-Bold.ttf'),
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(32, 0, 32, 15),
-                    child: TextFormField(
-                      //CHECK
-                      validator: ((value) {
-                        if (value == null || value == "") {
-                          return "Enter your name or email";
-                        }
-                        return null;
-                      }),
-
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0)),
-                        labelText: 'Enter your username',
+                  Stack(
+                    children: [
+                      CustomPaint(
+                        painter: RPSCustomPainter(),
+                        child: Container(
+                          width: 1180.77,
+                          height: 278.91,
+                        ),
                       ),
-                    ),
-                  ),
-
-                  //PASSWORD
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(32, 0, 32, 15),
-                    child: TextFormField(
-                      //CHECK
-                      validator: ((value) {
-                        if (value == null || value.isEmpty) {
-                          return "Enter your password";
-                        }
-                        return null;
-                      }),
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0)),
-                        labelText: 'Enter your password',
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 160, 93, 0),
+                        child: Text(
+                          'Welcome back!',
+                          style: TextStyle(
+                              color: Color(0xffFFFFFF),
+                              fontSize: 36,
+                              fontFamily: 'Fonts/ZillaSlab-Bold.ttf'),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(32, 0, 32, 15),
+                        child: TextFormField(
+                          //CHECK
+                          validator: ((value) {
+                            if (value == null || value == "") {
+                              return "Enter your name or email";
+                            }
+                            return null;
+                          }),
+                          onChanged: (value) {
+                            setState(() {
+                              email = value;
+                            });
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0)),
+                            labelText: 'Enter your username',
+                          ),
+                        ),
+                      ),
+
+                      //PASSWORD
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(32, 0, 32, 15),
+                        child: TextFormField(
+                          //CHECK
+                          validator: ((value) {
+                            if (value == null || value.isEmpty) {
+                              return "Enter your password";
+                            }
+                            return null;
+                          }),
+                          onChanged: (value) {
+                            setState(() {
+                              password = value;
+                            });
+                          },
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0)),
+                            labelText: 'Enter your password',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
 
 //text section (if you forget password , you dont have account 'sign up', 3 icon)
-              Column(
-                children: [
-                  //button forget password
-                  Padding(padding: EdgeInsets.all(12)),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const forgetpasswordPage()),
-                      );
-                    },
-
-                    //Forget Password
-                    child: const Text(
-                      'Forgot password ? ',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ),
-
-                  //button signup
-                  Padding(padding: EdgeInsets.fromLTRB(60, 49, 60, 9)),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const signupPage()),
-                      );
-                    },
-                    //SignUp
-                    child: Text(
-                      'i don’t have account ? '
-                      'Sign Up ',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-
-                  //icon (Apple, google , facebook)
-                  Row(
+                  Column(
                     children: [
-                      Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
-                      Image.asset('images/applelogo.png'),
-                      Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
-                      Image.asset('images/gmaillogo.png'),
-                      Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
-                      Image.asset('images/facebooklogo.png'),
+                      //button forget password
+                      Padding(padding: EdgeInsets.all(12)),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const forgetpasswordPage()),
+                          );
+                        },
+
+                        //Forget Password
+                        child: const Text(
+                          'Forgot password ? ',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ),
+
+                      //button signup
+                      Padding(padding: EdgeInsets.fromLTRB(60, 49, 60, 9)),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const signupPage()),
+                          );
+                        },
+                        //SignUp
+                        child: Text(
+                          'i don’t have account ? '
+                          'Sign Up ',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+
+                      //icon (Apple, google , facebook)
+                      Row(
+                        children: [
+                          Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
+                          Image.asset('images/applelogo.png'),
+                          Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
+                          Image.asset('images/gmaillogo.png'),
+                          Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
+                          Image.asset('images/facebooklogo.png'),
+                        ],
+                      )
                     ],
-                  )
+                  ),
+
+                  //BUTTON
+                  ElevatedButton(
+                      style: raisedButtonStyle,
+
+                      //This BUTTON to go Home Page
+                      onPressed: () async {
+                        // _formKey.currentState!.validate() to validate Form
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          // Call Login Function (Login Api)
+                          var result = await login(email, password);
+                          setState(() {
+                            isLoading = false;
+                          });
+                          if (result != null && result) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const cardspage()),
+                            );
+                          } else {
+                            showToast(false, "Invalid email or password");
+                          }
+                        }
+                      },
+
+                      //LABEL BUTTON
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      )),
+
+                  // logintextsection(context),
                 ],
               ),
 
-              //BUTTON
-              ElevatedButton(
-                  style: raisedButtonStyle,
-
-                  //This BUTTON to go Home Page
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const cardspage()),
-                    );
-
-                    // _formKey.currentState!.validate() to validate Form
-                    if (_formKey.currentState!.validate()) {
-                      // Call Login Function (Login Api)
-                    }
-                  },
-
-                  //LABEL BUTTON
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  )),
-
-              // logintextsection(context),
-            ],
-          ),
-
 //To enter and check the username and password
-        ),
+            ),
+          ),
+          if (isLoading) spinkit
+        ],
       ),
     ); //END Scaffold
   }

@@ -1,4 +1,6 @@
 import 'package:addiction_app_v1/views/Confirom_view.dart';
+import 'package:addiction_app_v1/views/Home_page_view.dart';
+import 'package:addiction_app_v1/views/Log_in_view.dart';
 import 'package:addiction_app_v1/views/Question_Answer_view.dart';
 import 'package:addiction_app_v1/views/guest_view.dart';
 import 'package:addiction_app_v1/views/Welcome.dart';
@@ -22,6 +24,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     //final w = MediaQuery.of(context).size.width;
 
-    return MaterialApp(home: QuestionPage());
+    return MaterialApp(home: LoginPage());
   }
 }

@@ -11,8 +11,8 @@ import '../Models/post_response.dart';
 //get Question
 Future<Questionanswermodel?> getQuestionanswermodel() async {
   try {
-    final response = await http.get(
-        Uri.parse('http://154.53.58.222:8889/api/Question/GetQuestionAnswers'));
+    final response = await http.get(Uri.parse(
+        'http://154.53.58.222:8889/api/Question/GetQuestionAnswers')); //Question/GetQuestionAnswers
 
     if (response.statusCode == 200) {
       // If the server did return

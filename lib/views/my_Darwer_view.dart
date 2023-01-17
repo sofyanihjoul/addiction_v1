@@ -1,5 +1,8 @@
+import 'package:addiction_app_v1/COMMON/constants.dart';
 import 'package:addiction_app_v1/views/Home_page_view.dart';
 import 'package:addiction_app_v1/views/change_Your_think_view.dart';
+import 'package:addiction_app_v1/views/posts_view.dart';
+import 'package:addiction_app_v1/views/profile_Dr_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -65,14 +68,25 @@ class _MyDarwerState extends State<MyDarwer> {
             leading: Icon(Icons.person),
             title: Text("profile"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => profilDrPage(
+                          userID: StaticValues.userId,
+                          isDoctor: false,
+                        )),
+              );
             },
           ),
           ListTile(
             leading: Icon(Icons.post_add),
             title: Text("post"),
             onTap: () {
-              Navigator.pop(context);
+              //PostsView
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PostsView()),
+              );
             },
           ),
           ListTile(

@@ -5,6 +5,7 @@ import 'package:addiction_app_v1/Models/addiction_type_model.dart';
 import 'package:addiction_app_v1/Models/register_model.dart';
 import 'package:http/http.dart' as http;
 import '../Models/post_response.dart';
+import '../Models/user_model.dart';
 
 Future<Addictiontypes?> getAddictionTypes() async {
   try {
@@ -56,6 +57,32 @@ Future<PostResponse?> registerUser(RegisterModel model) async {
     }
 
     return res;
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
+}
+
+Future<bool> login(String email, String password) async {
+  var response = await http.get(
+    Uri.parse(
+        "http://154.53.58.222:8889/api/User/Login?Email=$email&Password=$password"),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    var res = userModelFromJson(response.body);
+    if (res.isSuccess) {
+      StaticValues.userId = res.data!.userId!;
+      return true;
+    }
+
+    return false;
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
