@@ -179,15 +179,7 @@ Widget signupSection(BuildContext context) => Column(
 
 final _formKey = GlobalKey<FormState>();
 //design the sign up button
-final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-    // onPrimary: Colors.black87,
-    /* primary: Color(0xff245865),
-  maximumSize: Size(326, 63),
-  padding: EdgeInsets.symmetric(horizontal: 50),
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(25)),
-  ),*/
-    );
+final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom();
 
 // column view
 class _signupPageState extends State<signupPage> {
