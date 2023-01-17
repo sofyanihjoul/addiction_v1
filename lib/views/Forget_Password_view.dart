@@ -1,4 +1,4 @@
-import 'package:addiction_app_v1/Log_in_view.dart';
+import 'package:addiction_app_v1/views/Log_in_view.dart';
 import 'package:addiction_app_v1/views/Confirom_view.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -39,6 +39,7 @@ Widget ForgetpasswordbacgroundSection(BuildContext context) => Column(
                           builder: (context) => const LoginPage()),
                     );
                   },
+                  //BACKSPACE
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 50, 0),
                     child: Image.asset(
@@ -128,7 +129,7 @@ class _forgetpasswordPageState extends State<forgetpasswordPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ConfirmedPage()));
+                          builder: (context) => const confirompassword()));
 
                   // _formKey.currentState!.validate() to validate Form
                   if (_formKey.currentState!.validate()) {
