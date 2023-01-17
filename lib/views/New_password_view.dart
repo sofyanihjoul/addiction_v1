@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'dart:ui' as ui;
-
-import '../Log_in_view.dart';
+import 'Log_in_view.dart';
 
 class NewPasswordPage extends StatefulWidget {
   const NewPasswordPage({super.key});

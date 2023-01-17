@@ -1,23 +1,16 @@
-import 'dart:js';
-
-import 'package:addiction_app_v1/views/New_password_view.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
+import 'package:flutter_verification_code/flutter_verification_code.dart';
 import 'dart:ui' as ui;
 
-class ConfirmedPage extends StatefulWidget {
-  const ConfirmedPage({super.key});
+class confirompassword extends StatefulWidget {
+  const confirompassword({super.key});
 
   @override
-  State<ConfirmedPage> createState() => _ConfirmedPageState();
+  State<confirompassword> createState() => _confirompasswordState();
 }
 
-//confirim password background Sectoion
 Widget ConfirombacgroundSection = Column(
   children: [
     Stack(
@@ -32,7 +25,7 @@ Widget ConfirombacgroundSection = Column(
 
         //TITILE
         Padding(
-          padding: const EdgeInsets.fromLTRB(93, 160, 93, 0),
+          padding: const EdgeInsets.fromLTRB(50, 140, 50, 0),
           child: Text(
             'Confirmed Code',
             style: TextStyle(
@@ -46,171 +39,72 @@ Widget ConfirombacgroundSection = Column(
   ],
 );
 
-//Small Text feild to Enter confirom  code
-Widget EnterCodeSection = Column(
-  children: [
-    Image.asset(
-      'images/confiromed.png',
-      height: 237,
-      width: 289,
-    ),
-    Row(
-      children: [
-        //FIRST NUMBER
-        Padding(
-          padding: const EdgeInsets.fromLTRB(70, 29, 10, 15),
-          child: SizedBox(
-            height: 70,
-            width: 70,
-            child: Card(
-              color: Color(0xffFFFFFF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-              ),
-              child: TextField(
-                style: TextStyle(fontSize: 36),
-              ),
-            ),
-          ),
-        ),
-        //SECOND NUMBER
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 29, 8, 15),
-          child: SizedBox(
-            height: 70,
-            width: 70,
-            child: Card(
-              color: Color(0xffFFFFFF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-              ),
-              child: TextField(
-                style: TextStyle(fontSize: 36),
-              ),
-            ),
-          ),
-        ),
-        // THIRD NUMBER
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 29, 8, 15),
-          child: SizedBox(
-            height: 70,
-            width: 70,
-            child: Card(
-              color: Color(0xffFFFFFF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-              ),
-              child: TextField(
-                style: TextStyle(fontSize: 36),
-              ),
-            ),
-          ),
-        ),
-        //FORTH NUMBER
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 29, 10, 15),
-          child: SizedBox(
-            height: 70,
-            width: 70,
-            child: Card(
-              color: Color(0xffFFFFFF),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-              ),
-              child: TextField(
-                style: TextStyle(fontSize: 36),
-              ),
-            ),
-          ),
-        ),
-      ],
-    ),
-    //TEXT to resend the code
-    Row(
-      children: [
-        Text(
-          'Didn’t receive code?',
-          style: TextStyle(
-            color: Color(0Xff000000),
-            fontSize: 20,
-          ),
-        ),
-        Text(
-          'RESEND',
-          style: TextStyle(color: Color(0xff245865)),
-        ),
-
-        /* InkWell(
-      // When the user tap on the resend , 
-     onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const ()),
-            );
-          },
-      child: const Padding(
-        padding: EdgeInsets.all(12.0),
-        child: Text('Resend'),
-      ),
-    ),*/
-      ],
-    )
-  ],
-);
-
-final _formKey = GlobalKey<FormState>();
-//design the login button
-final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-  // onPrimary: Colors.black87,
-  primary: Color(0xff245865),
-  minimumSize: Size(326, 63),
-  padding: EdgeInsets.symmetric(horizontal: 16),
-  shape: const RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(25)),
-  ),
-);
-
-class _ConfirmedPageState extends State<ConfirmedPage> {
+class _confirompasswordState extends State<confirompassword> {
   @override
   Widget build(BuildContext context) {
+    bool _onEditing = true;
+    String? _code;
+
     return Scaffold(
-      backgroundColor: Color(0xffC6C7C9),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(children: [
-            ConfirombacgroundSection,
-            EnterCodeSection,
-
-            //DESIGN BUTTON
-            ElevatedButton(
-                style: raisedButtonStyle,
-
-                //button to confirm and go to home page
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NewPasswordPage()));
-
-                  // _formKey.currentState!.validate() to validate Form
-                  if (_formKey.currentState!.validate()) {
-                    // Call rest Function (Confirom Api)
-                  }
-                },
-
-                //Rest Password  button
-                child: const Text(
-                  "confirm",
-                  style: TextStyle(
-                      fontSize: 25, fontFamily: 'Fonts/ZillaSlab-SemiBold.ttf'),
-                )),
-          ]),
-        ),
+      body: Column(
+        children: [
+          ConfirombacgroundSection,
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Center(
+              child: Text(
+                'Enter your code',
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ),
+          ),
+          VerificationCode(
+            textStyle: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Theme.of(context).primaryColor),
+            keyboardType: TextInputType.number,
+            underlineColor: Colors
+                .amber, // If this is null it will use primaryColor: Colors.red from Theme
+            length: 4,
+            cursorColor:
+                Colors.blue, // If this is null it will default to the ambient
+            // clearAll is NOT required, you can delete it
+            // takes any widget, so you can implement your design
+            clearAll: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'clear all',
+                style: TextStyle(
+                    fontSize: 14.0,
+                    decoration: TextDecoration.underline,
+                    color: Colors.blue[700]),
+              ),
+            ),
+            margin: const EdgeInsets.all(12),
+            onCompleted: (String value) {
+              setState(() {
+                _code = value;
+              });
+            },
+            onEditing: (bool value) {
+              setState(() {
+                _onEditing = value;
+              });
+              if (!_onEditing) FocusScope.of(context).unfocus();
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: _onEditing
+                  ? const Text('Please enter full code')
+                  : Text('Your code: $_code'),
+            ),
+          )
+        ],
       ),
-    ); //End scaffold
+    );
   }
 }
 

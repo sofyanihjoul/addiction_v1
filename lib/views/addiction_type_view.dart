@@ -1,11 +1,10 @@
 import 'dart:convert';
-
-import 'package:addiction_app_v1/views/sign_up.dart';
+import 'package:addiction_app_v1/views/sign_up_view.dart';
 import 'package:flutter/material.dart';
-
+import '../COMMON/loader.dart';
 import '../Models/addiction_type_model.dart';
 import '../Models/register_model.dart';
-import '../api/sign_up_apis.dart';
+import '../api/sign_up_API.dart';
 
 class TypeOffAddictionPage extends StatefulWidget {
   RegisterModel model;
@@ -93,7 +92,7 @@ Widget QuestionAnswersectoion(BuildContext context) => Center(
                     )
                   :
                   // Loading
-                  Container();
+                  spinkit;
             },
           ),
         ],

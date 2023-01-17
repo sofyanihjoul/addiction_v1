@@ -39,8 +39,53 @@ Widget QuestionAnswersectoion(BuildContext context) => Center(
               ),
             ),
           ),
+          //lodeing
 
-          Column(
+          /*  FutureBuilder<Addictiontypes?>(
+            future: getAddictionTypes(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Text(snapshot.error.toString());
+              }
+
+              return snapshot.hasData
+                  ? SizedBox(
+                      height: MediaQuery.of(context).size.height / 2,
+                      child: ListView.builder(
+                        itemCount: snapshot.data!.data!.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.fromLTRB(32, 22, 32, 15),
+                            child: GestureDetector(
+                              onTap: () async {
+                                model.addictionTypeId = snapshot
+                                    .data!.data![index]!.addictionTypeId;
+                                await registerUser(model);
+                              },
+                              child: SizedBox(
+                                  child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25.0),
+                                ),
+                                color:
+                                    const Color(0xffFFFFFF).withOpacity(0.50),
+                                child: SizedBox(
+                                  width: 326,
+                                  height: 63,
+                                  child: Center(
+                                    child: Text(
+                                        "${snapshot.data!.data![index]!.addictionTypeName}"),
+                                  ),
+                                ),
+                              )),
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                  :*/
+
+          /*   Column(
             children: [
               //Answer 1
               Padding(
@@ -144,7 +189,7 @@ Widget QuestionAnswersectoion(BuildContext context) => Center(
                 ),
               ),
             ],
-          )
+          )*/
         ],
       ),
     );
