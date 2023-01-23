@@ -35,8 +35,9 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       //home: QuestionPage(model: model)
-      home: signupPage(),
+      //home: signupPage(),
       //home: LoginPage(),
+      home: guestPage(),
     );
   }
 }

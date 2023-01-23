@@ -1,5 +1,7 @@
 import 'package:addiction_app_v1/views/Forget_Password_view.dart';
 import 'package:addiction_app_v1/views/Home_page_view.dart';
+import 'package:addiction_app_v1/views/Question_Answer_view.dart';
+import 'package:addiction_app_v1/views/Welcome_Page_view.dart';
 import 'package:addiction_app_v1/views/sign_up_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +36,7 @@ class _guestPageState extends State<guestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffC6C7C9),
+      backgroundColor: Color(0xffFFFFFF),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -56,14 +58,14 @@ class _guestPageState extends State<guestPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const signupPage()),
+                                builder: (context) => const Welcomepage()),
                           );
                         },
                         //BACKSPACE
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(20, 0, 50, 0),
                           child: Image.asset(
-                            'images/backspace.png',
+                            'image/backspace.png',
                             width: 40,
                             height: 30,
                           ),
@@ -99,7 +101,6 @@ class _guestPageState extends State<guestPage> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(32, 0, 32, 15),
                     child: TextFormField(
-                      obscureText: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0)),
@@ -119,13 +120,10 @@ class _guestPageState extends State<guestPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const cardspage()),
+                          builder: (context) => QuestionPage(
+                                model: model,
+                              )),
                     );
-
-                    // _formKey.currentState!.validate() to validate Form
-                    if (_formKey.currentState!.validate()) {
-                      // Call Login Function (Login Api)
-                    }
                   },
 
                   //LABEL BUTTON
@@ -135,12 +133,8 @@ class _guestPageState extends State<guestPage> {
                       fontSize: 30,
                     ),
                   )),
-
-              // logintextsection(context),
             ],
           ),
-
-//To enter and check the username and password
         ),
       ),
     ); //END Scaffold
