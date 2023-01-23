@@ -56,6 +56,14 @@ Widget ConfirombacgroundSection(BuildContext context) => Column(
                     fontFamily: 'Fonts/ZillaSlab-LightItalic.ttf'),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(40, 250, 40, 5),
+              child: Image.asset(
+                'image/.png',
+                width: 500,
+                height: 200,
+              ),
+            ),
           ],
         ),
       ],
