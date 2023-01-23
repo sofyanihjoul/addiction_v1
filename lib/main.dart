@@ -24,6 +24,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     //final w = MediaQuery.of(context).size.width;
 
-    return MaterialApp(home: LoginPage());
+    return MaterialApp(home: Welcomepage());
   }
 }

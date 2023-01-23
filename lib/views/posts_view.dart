@@ -1,6 +1,5 @@
 import 'package:addiction_app_v1/COMMON/loader.dart';
 import 'package:flutter/material.dart';
-
 import '../COMMON/constants.dart';
 import '../Models/send_post_model.dart';
 import '../api/post_api.dart';
