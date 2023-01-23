@@ -57,9 +57,9 @@ Widget ConfirombacgroundSection(BuildContext context) => Column(
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(40, 250, 40, 5),
+              padding: EdgeInsets.fromLTRB(40, 230, 40, 5),
               child: Image.asset(
-                'image/.png',
+                'image/confiormpassword.png',
                 width: 500,
                 height: 200,
               ),

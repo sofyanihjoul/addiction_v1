@@ -37,7 +37,11 @@ class _MyAppState extends State<MyApp> {
       //home: QuestionPage(model: model)
       //home: signupPage(),
       //home: LoginPage(),
-      home: guestPage(),
+      //home: forgetpasswordPage(),
+      home: PostsView(),
+
+      //START APP
+      // home: guestPage(),
     );
   }
 }
