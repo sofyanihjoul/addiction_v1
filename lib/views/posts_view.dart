@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../COMMON/constants.dart';
 import '../Models/send_post_model.dart';
 import '../api/post_api.dart';
+import 'my_Darwer_view.dart';
 
 class PostsView extends StatefulWidget {
   const PostsView({super.key});
@@ -15,6 +16,13 @@ class _PostsViewState extends State<PostsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffDADBDD),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: const Color(0xff245865).withOpacity(0.695),
+      ),
+      //MENU BAR
+      drawer: const MyDarwer(),
       body: FutureBuilder(
         future: getPosts(),
         builder: (context, snapshot) {
@@ -22,11 +30,33 @@ class _PostsViewState extends State<PostsView> {
               ? ListView.builder(
                   itemCount: snapshot.data!.data!.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      child: Text("${snapshot.data!.data![index].body}"),
+                    return Stack(
+                      children: [
+                        SizedBox(
+                          child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 20, 0, 35),
+                              child: Card(
+                                color: Color(0xff245865),
+                                child: const SizedBox(
+                                  width: 400,
+                                  height: 450,
+                                ),
+                              )),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20, 100, 20, 32),
+                          child: Text(
+                            "${snapshot.data!.data![index].body}",
+                            style: TextStyle(
+                                fontSize: 25, color: Color(0xffFFFFFF)),
+                          ),
+                        ),
+                      ],
+                      // child: Text("${snapshot.data!.data![index].body}"),
                     );
                   },
                 )
+              //loadeing
               : spinkit;
         },
       ),
@@ -40,13 +70,14 @@ class _PostsViewState extends State<PostsView> {
             setState(() {});
           }
         },
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 27, 9, 51),
         child: const Icon(Icons.add),
       ),
     );
   }
 }
 
+//send post
 class SendPost extends StatefulWidget {
   const SendPost({super.key});
 
@@ -67,6 +98,67 @@ class _SendPostState extends State<SendPost> {
       body: Stack(children: [
         Form(
           key: _key,
+
+          /*
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20, 300, 20, 32),
+                        child: Text("${snapshot.data!.data![index].body}"),
+                            style: TextStyle(
+                                fontSize: 25, color: Color(0xffFFFFFF)),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20, 340, 20, 32),
+                          child: Text(
+                            'Family addicti is a broad term ...',
+                            style: TextStyle(
+                                fontSize: 15, color: Color(0xffFFFFFF)),
+                          ),
+                        )
+                      ],
+                    ),
+                    //CARD 2
+                    Stack(
+                      children: [
+                        SizedBox(
+                          child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 20, 0, 35),
+                              child: Card(
+                                color: Color(0xff245865),
+                                child: const SizedBox(
+                                  width: 400,
+                                  height: 450,
+                                ),
+                              )),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20, 30, 20, 32),
+                          child: Image.asset(
+                            'image/depression.jpg',
+                            height: 250,
+                            width: 380,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20, 300, 20, 32),
+                          child: Text(
+                            'Depression',
+                            style: TextStyle(
+                                fontSize: 25, color: Color(0xffFFFFFF)),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20, 340, 20, 32),
+                          child: Text(
+                            'Depression is a serious condition that negatively affects...',
+                            style: TextStyle(
+                                fontSize: 15, color: Color(0xffFFFFFF)),
+                          ),
+                        )
+                      ],
+                    ),*/
+
+          //write a post
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             SizedBox(
               width: w / 1.2,
@@ -94,7 +186,7 @@ class _SendPostState extends State<SendPost> {
                       borderRadius: BorderRadius.circular(20.0),
                       // width: 0.0 produces a thin "hairline" border
                       borderSide:
-                          const BorderSide(color: Colors.yellow, width: 2.2),
+                          const BorderSide(color: Colors.blue, width: 2.2),
                     ),
                     errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -105,17 +197,18 @@ class _SendPostState extends State<SendPost> {
                     focusedErrorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       // width: 0.0 produces a thin "hairline" border
-                      borderSide:
-                          const BorderSide(color: Colors.red, width: 0.0),
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(87, 54, 244, 187), width: 0.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       // width: 0.0 produces a thin "hairline" border
-                      borderSide:
-                          const BorderSide(color: Colors.yellow, width: 2.2),
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(255, 59, 255, 245), width: 2.2),
                     ),
                     border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.yellow, width: 2.2),
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 18, 4, 70), width: 2.2),
                     ),
                     filled: true,
                     fillColor: Colors.white,
@@ -125,12 +218,13 @@ class _SendPostState extends State<SendPost> {
                 ),
               ),
             ),
+            //submit button
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
-                  minimumSize: Size(w / 1.4, 50),
-                  backgroundColor: const Color(0xFFD1B000), //#D1B000
+                  minimumSize: Size(w / 1.5, 70),
+                  backgroundColor: Color.fromARGB(255, 21, 0, 209), //#D1B000
                   elevation: 0,
                 ),
                 onPressed: () async {
@@ -159,6 +253,7 @@ class _SendPostState extends State<SendPost> {
                 child: const Text("Submit")),
           ]),
         ),
+        //loading
         if (isLoading) spinkit
       ]),
     );

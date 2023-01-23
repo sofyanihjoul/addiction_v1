@@ -1,3 +1,4 @@
+import 'package:addiction_app_v1/views/change_think_food_view.dart';
 import 'package:addiction_app_v1/views/my_Darwer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -14,18 +15,19 @@ class _changeyourthinkState extends State<changeyourthink> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xffC4E2FF),
+        backgroundColor: const Color(0xffDADBDD),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Color(0xffC4E2FF).withOpacity(0.695),
+          backgroundColor: const Color(0xff245865).withOpacity(0.695),
         ),
-        drawer: MyDarwer(),
+        //MENU BAR
+        drawer: const MyDarwer(),
         body: SingleChildScrollView(
           child: Column(
             children: [
               //Title
               Padding(
-                padding: EdgeInsets.fromLTRB(32, 115, 32, 32),
+                padding: EdgeInsets.fromLTRB(32, 20, 32, 32),
                 child: Text(
                   'Change Your Think ',
                   style: TextStyle(
@@ -94,11 +96,26 @@ class _changeyourthinkState extends State<changeyourthink> {
                               )),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(20, 30, 20, 32),
-                          child: Image.asset(
-                            'image/foodaddiction.jpg',
-                            height: 250,
-                            width: 380,
+                          padding: const EdgeInsets.fromLTRB(10, 100, 0, 0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const foodaddiction()),
+                              );
+                            },
+
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(20, 30, 20, 32),
+                              child: Image.asset(
+                                'image/foodaddiction.jpg',
+                                height: 250,
+                                width: 380,
+                              ),
+                            ),
+                            //BACKSPACE
                           ),
                         ),
                         Padding(
@@ -119,6 +136,7 @@ class _changeyourthinkState extends State<changeyourthink> {
                         )
                       ],
                     ),
+
                     //CARD 4
                     Stack(
                       children: [

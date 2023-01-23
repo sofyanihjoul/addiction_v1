@@ -20,6 +20,7 @@ class forgetpasswordPage extends StatefulWidget {
 Widget ForgetpasswordbacgroundSection(BuildContext context) => Column(
       children: [
         Stack(
+          //Shape
           children: [
             CustomPaint(
               painter: RPSCustomPainter(),
@@ -35,15 +36,14 @@ Widget ForgetpasswordbacgroundSection(BuildContext context) => Column(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
+                      MaterialPageRoute(builder: (context) => LoginPage()),
                     );
                   },
                   //BACKSPACE
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 50, 0),
                     child: Image.asset(
-                      'images/backspace.png',
+                      'image/backspace.png',
                       width: 40,
                       height: 30,
                     ),
@@ -61,10 +61,14 @@ Widget ForgetpasswordbacgroundSection(BuildContext context) => Column(
               ),
             ),
 
-            /* Padding(padding: EdgeInsets.fromLTRB(left, top, right, bottom),
-           child:image.asset('name image'),
-           hight:000,
-           width:000,)*/
+            Padding(
+              padding: EdgeInsets.fromLTRB(40, 250, 40, 5),
+              child: Image.asset(
+                'image/forgetpaassword.png',
+                width: 500,
+                height: 200,
+              ),
+            ),
           ],
         ),
       ],
@@ -112,7 +116,7 @@ class _forgetpasswordPageState extends State<forgetpasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffC6C7C9),
+      backgroundColor: Color(0xffFFFFFF),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -130,18 +134,14 @@ class _forgetpasswordPageState extends State<forgetpasswordPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const confirompassword()));
-
-                  // _formKey.currentState!.validate() to validate Form
-                  if (_formKey.currentState!.validate()) {
-                    // Call rest Function (Login Api)
-                  }
                 },
 
                 //Rest Password  button
                 child: const Text(
                   "Reset Password",
                   style: TextStyle(
-                      fontSize: 25, fontFamily: 'Fonts/ZillaSlab-SemiBold.ttf'),
+                    fontSize: 25,
+                  ),
                 )),
           ]),
         ),

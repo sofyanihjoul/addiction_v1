@@ -1,6 +1,8 @@
 import 'dart:developer';
 
-import 'package:addiction_app_v1/views/Welcome.dart';
+import 'package:addiction_app_v1/views/Log_in_view.dart';
+import 'package:addiction_app_v1/views/Question_Answer_view.dart';
+import 'package:addiction_app_v1/views/guest_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -9,7 +11,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'dart:ui' as ui;
 
 import '../Models/register_model.dart';
-import 'addiction_type_view.dart';
 
 class signupPage extends StatefulWidget {
   const signupPage({super.key});
@@ -41,25 +42,6 @@ Widget signupSection(BuildContext context) => Column(
                     fontSize: 36,
                     fontFamily: 'Fonts\ZillaSlab-Bold.ttf'),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 100, 0, 0),
-              child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Welcomepage()),
-                    );
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(20, 0, 50, 0),
-                    child: Image.asset(
-                      'images/backspace.png',
-                      width: 40,
-                      height: 30,
-                    ),
-                  )),
             ),
           ],
         ),
@@ -186,7 +168,7 @@ class _signupPageState extends State<signupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffC6C7C9),
+      backgroundColor: Color(0xffFFFFFF),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -202,12 +184,13 @@ class _signupPageState extends State<signupPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => TypeOffAddictionPage(
+                          builder: (context) => QuestionPage(
                                 model: model,
                               )),
                     );
                   }
                 },
+                //BUTTON
                 style: ElevatedButton.styleFrom(
                   fixedSize: Size(355, 63),
                   backgroundColor: Color(0xff245865),
@@ -217,7 +200,7 @@ class _signupPageState extends State<signupPage> {
                 child: Text(
                   "Sign Up",
                   style: TextStyle(fontSize: 25),
-                ))
+                )),
           ]),
         ),
       ),

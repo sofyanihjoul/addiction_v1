@@ -1,7 +1,7 @@
+import 'package:addiction_app_v1/views/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import 'dart:ui' as ui;
 
 import '../ITEM/item.dart';
@@ -85,13 +85,14 @@ class _WelcomepageState extends State<Welcomepage> {
                                   primary: Color(0xff245865), // background
                                   onPrimary: Colors.white, // font
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  /* Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => signupPage()),
+                                  );*/
+                                },
                                 child: Text("Get Started ")),
-
-                            //Button guset
-                            ElevatedButton(
-                                onPressed: () {},
-                                child: Text("Started as Guset")),
                           ],
                         )
                     ],
@@ -129,7 +130,7 @@ class _WelcomepageState extends State<Welcomepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(218, 219, 212, 1),
+      backgroundColor: Color(0xffFFFFFF),
       body: Container(
         child: Stack(
           children: <Widget>[

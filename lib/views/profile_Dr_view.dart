@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:addiction_app_v1/COMMON/loader.dart';
+import 'package:addiction_app_v1/views/my_Darwer_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -21,7 +22,13 @@ class _profilDrPageState extends State<profilDrPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff245865).withOpacity(0.655),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: const Color(0xff245865).withOpacity(0.695),
+      ),
+      //MENU BAR
+      drawer: const MyDarwer(),
+      backgroundColor: Color(0xff245865).withOpacity(1.0),
       body: SingleChildScrollView(
         child: Center(
           //body: SingleChildScrollView(
@@ -90,7 +97,7 @@ class _profilDrPageState extends State<profilDrPage> {
                               children: [
                                 //name
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(55, 155, 71, 9),
+                                  padding: EdgeInsets.fromLTRB(55, 155, 10, 9),
                                   child: Text(
                                     widget.isDoctor
                                         ? 'Dr.${snapshot.data!.data!.fullName}'
@@ -107,7 +114,7 @@ class _profilDrPageState extends State<profilDrPage> {
                                   ),
                                 ),
 
-                                //Call,Massage
+                                // icon Call,Massage
                                 Row(
                                   children: [
                                     Padding(
@@ -133,7 +140,7 @@ class _profilDrPageState extends State<profilDrPage> {
                                   : const Text('About '),
                             ),
 
-                            //INFO. ABOUT DR.
+                            //info dr
                             Column(
                               children: [
                                 const SizedBox(
@@ -168,65 +175,6 @@ class _profilDrPageState extends State<profilDrPage> {
                                 ),
                               ],
                             ),
-
-                            // //TITLE Upcoming Schedules
-                            // Padding(
-                            //   padding:
-                            //       const EdgeInsets.fromLTRB(20, 440, 162, 11),
-                            //   child: Text('Upcoming Schedules'),
-                            // ),
-
-                            // //CALENDER
-                            // Stack(
-                            //   children: [
-                            //     Padding(
-                            //       padding: const EdgeInsets.fromLTRB(
-                            //           20, 460, 20, 11),
-                            //       child: SizedBox(
-                            //         child: Card(
-                            //           shape: RoundedRectangleBorder(
-                            //             borderRadius:
-                            //                 BorderRadius.circular(10.0),
-                            //           ),
-                            //           color: const Color(0xff69B0EE)
-                            //               .withOpacity(0.35),
-                            //           child: const SizedBox(
-                            //               width: 359,
-                            //               height: 88,
-                            //               child: Padding(
-                            //                 padding: EdgeInsets.fromLTRB(
-                            //                     100, 14, 44, 4),
-                            //                 child: Center(
-                            //                   child: Text(
-                            //                     'Dr.name ',
-                            //                     style: TextStyle(
-                            //                         fontSize: 20,
-                            //                         color: Color.fromARGB(
-                            //                             64, 0, 0, 0)),
-                            //                   ),
-                            //                 ),
-                            //               )),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //     SizedBox(
-                            //       child: Padding(
-                            //         padding: const EdgeInsets.fromLTRB(
-                            //             30, 470, 20, 11),
-                            //         child: Card(
-                            //             shape: RoundedRectangleBorder(
-                            //               borderRadius:
-                            //                   BorderRadius.circular(10.0),
-                            //             ),
-                            //             color: const Color(0xffA3BCC0),
-                            //             child: const SizedBox(
-                            //               width: 64,
-                            //               height: 64,
-                            //             )),
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
                           ],
                         )
                       : Column(
@@ -278,3 +226,62 @@ class RPSCustomPainter extends CustomPainter {
     return true;
   }
 }
+
+// //TITLE Upcoming Schedules
+// Padding(
+//   padding:
+//       const EdgeInsets.fromLTRB(20, 440, 162, 11),
+//   child: Text('Upcoming Schedules'),
+// ),
+
+// //CALENDER
+// Stack(
+//   children: [
+//     Padding(
+//       padding: const EdgeInsets.fromLTRB(
+//           20, 460, 20, 11),
+//       child: SizedBox(
+//         child: Card(
+//           shape: RoundedRectangleBorder(
+//             borderRadius:
+//                 BorderRadius.circular(10.0),
+//           ),
+//           color: const Color(0xff69B0EE)
+//               .withOpacity(0.35),
+//           child: const SizedBox(
+//               width: 359,
+//               height: 88,
+//               child: Padding(
+//                 padding: EdgeInsets.fromLTRB(
+//                     100, 14, 44, 4),
+//                 child: Center(
+//                   child: Text(
+//                     'Dr.name ',
+//                     style: TextStyle(
+//                         fontSize: 20,
+//                         color: Color.fromARGB(
+//                             64, 0, 0, 0)),
+//                   ),
+//                 ),
+//               )),
+//         ),
+//       ),
+//     ),
+//     SizedBox(
+//       child: Padding(
+//         padding: const EdgeInsets.fromLTRB(
+//             30, 470, 20, 11),
+//         child: Card(
+//             shape: RoundedRectangleBorder(
+//               borderRadius:
+//                   BorderRadius.circular(10.0),
+//             ),
+//             color: const Color(0xffA3BCC0),
+//             child: const SizedBox(
+//               width: 64,
+//               height: 64,
+//             )),
+//       ),
+//     ),
+//   ],
+// ),

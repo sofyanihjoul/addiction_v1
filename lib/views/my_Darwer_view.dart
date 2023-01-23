@@ -1,6 +1,7 @@
 import 'package:addiction_app_v1/COMMON/constants.dart';
 import 'package:addiction_app_v1/views/Home_page_view.dart';
 import 'package:addiction_app_v1/views/change_Your_think_view.dart';
+import 'package:addiction_app_v1/views/get_reward_view.dart';
 import 'package:addiction_app_v1/views/posts_view.dart';
 import 'package:addiction_app_v1/views/profile_Dr_view.dart';
 import 'package:flutter/material.dart';
@@ -45,11 +46,11 @@ class _MyDarwerState extends State<MyDarwer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName: Text("Sarah"),
-            accountEmail: Text("Sarahmuthana6677@gamil.com"),
+            accountName: Text(" "),
+            accountEmail: Text(""),
             currentAccountPicture: CircleAvatar(
               child: Text(
-                "S",
+                "",
                 style: TextStyle(fontSize: 40.0),
               ),
             ),
@@ -93,7 +94,10 @@ class _MyDarwerState extends State<MyDarwer> {
             leading: Icon(Icons.wallet_giftcard_sharp),
             title: Text("Get Rewards"),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => getreward()),
+              );
             },
           ),
           ListTile(

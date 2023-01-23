@@ -1,3 +1,5 @@
+import 'package:addiction_app_v1/views/Forget_Password_view.dart';
+import 'package:addiction_app_v1/views/New_password_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -11,33 +13,53 @@ class confirompassword extends StatefulWidget {
   State<confirompassword> createState() => _confirompasswordState();
 }
 
-Widget ConfirombacgroundSection = Column(
-  children: [
-    Stack(
+Widget ConfirombacgroundSection(BuildContext context) => Column(
       children: [
-        CustomPaint(
-          painter: RPSCustomPainter(),
-          child: Container(
-            width: 1180.77,
-            height: 278.91,
-          ),
-        ),
+        Stack(
+          children: [
+            CustomPaint(
+              painter: RPSCustomPainter(),
+              child: Container(
+                width: 1180.77,
+                height: 278.91,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 100, 0, 0),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const forgetpasswordPage()),
+                    );
+                  },
+                  //BACKSPACE
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 50, 0),
+                    child: Image.asset(
+                      'image/backspace.png',
+                      width: 40,
+                      height: 30,
+                    ),
+                  )),
+            ),
 
-        //TITILE
-        Padding(
-          padding: const EdgeInsets.fromLTRB(50, 140, 50, 0),
-          child: Text(
-            'Confirmed Code',
-            style: TextStyle(
-                color: Color(0xffFFFFFF),
-                fontSize: 30,
-                fontFamily: 'Fonts/ZillaSlab-LightItalic.ttf'),
-          ),
+            //TITILE
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50, 140, 50, 0),
+              child: Text(
+                'Confirmed Code',
+                style: TextStyle(
+                    color: Color(0xffFFFFFF),
+                    fontSize: 30,
+                    fontFamily: 'Fonts/ZillaSlab-LightItalic.ttf'),
+              ),
+            ),
+          ],
         ),
       ],
-    ),
-  ],
-);
+    );
 
 class _confirompasswordState extends State<confirompassword> {
   @override
@@ -48,7 +70,7 @@ class _confirompasswordState extends State<confirompassword> {
     return Scaffold(
       body: Column(
         children: [
-          ConfirombacgroundSection,
+          ConfirombacgroundSection(context),
           const Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
@@ -67,10 +89,7 @@ class _confirompasswordState extends State<confirompassword> {
             underlineColor: Colors
                 .amber, // If this is null it will use primaryColor: Colors.red from Theme
             length: 4,
-            cursorColor:
-                Colors.blue, // If this is null it will default to the ambient
-            // clearAll is NOT required, you can delete it
-            // takes any widget, so you can implement your design
+            cursorColor: Colors.blue,
             clearAll: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -101,7 +120,25 @@ class _confirompasswordState extends State<confirompassword> {
                   ? const Text('Please enter full code')
                   : Text('Your code: $_code'),
             ),
-          )
+          ),
+          //DESIGN BUTTON
+          ElevatedButton(
+
+              //this button go to new password page
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NewPasswordPage()));
+              },
+
+              //Rest Password  button
+              child: const Text(
+                "Reset Password",
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              )),
         ],
       ),
     );

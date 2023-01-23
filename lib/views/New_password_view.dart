@@ -1,3 +1,5 @@
+import 'package:addiction_app_v1/views/Confirom_view.dart';
+import 'package:addiction_app_v1/views/Home_page_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -13,32 +15,52 @@ class NewPasswordPage extends StatefulWidget {
 }
 
 //New password background Sectoion
-Widget NewPasswordbacgroundSection = Column(
-  children: [
-    Stack(
+Widget NewPasswordbacgroundSection(BuildContext context) => Column(
       children: [
-        CustomPaint(
-          painter: RPSCustomPainter(),
-          child: Container(
-            width: 1180.77,
-            height: 278.91,
-          ),
-        ),
-        //TITILE
-        Padding(
-          padding: const EdgeInsets.fromLTRB(93, 160, 60, 0),
-          child: Text(
-            'Reset Password',
-            style: TextStyle(
-                color: Color(0xffFFFFFF),
-                fontSize: 30,
-                fontFamily: 'Fonts/ZillaSlab-LightItalic.ttf'),
-          ),
+        Stack(
+          children: [
+            CustomPaint(
+              painter: RPSCustomPainter(),
+              child: Container(
+                width: 1180.77,
+                height: 278.91,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 100, 0, 0),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const confirompassword()),
+                    );
+                  },
+                  //BACKSPACE
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 50, 0),
+                    child: Image.asset(
+                      'image/backspace.png',
+                      width: 40,
+                      height: 30,
+                    ),
+                  )),
+            ),
+            //TITILE
+            Padding(
+              padding: const EdgeInsets.fromLTRB(93, 160, 60, 0),
+              child: Text(
+                'Reset Password',
+                style: TextStyle(
+                    color: Color(0xffFFFFFF),
+                    fontSize: 30,
+                    fontFamily: 'Fonts/ZillaSlab-LightItalic.ttf'),
+              ),
+            ),
+          ],
         ),
       ],
-    ),
-  ],
-);
+    );
 
 //To enter new password
 Widget EnterNewPassSection = Column(
@@ -104,7 +126,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
         child: Form(
           key: _formKey,
           child: Column(children: [
-            NewPasswordbacgroundSection,
+            NewPasswordbacgroundSection(context),
             EnterNewPassSection,
 
             //DESIGN BUTTON
@@ -113,10 +135,8 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
 
                 //button to confirm and go to home page
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => cardspage()));
 
                   // _formKey.currentState!.validate() to validate Form
                   if (_formKey.currentState!.validate()) {
@@ -128,7 +148,8 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                 child: const Text(
                   "New Password",
                   style: TextStyle(
-                      fontSize: 25, fontFamily: 'Fonts/ZillaSlab-SemiBold.ttf'),
+                    fontSize: 25,
+                  ),
                 )),
           ]),
         ),

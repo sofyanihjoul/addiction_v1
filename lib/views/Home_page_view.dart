@@ -15,161 +15,169 @@ class cardspage extends StatefulWidget {
   State<cardspage> createState() => _cardspageState();
 }
 
-Widget homebackgroungsectoion = Column(
-  //body: SingleChildScrollView(
+Widget homebackgroungsectoion(BuildContext context) => Column(
+      //body: SingleChildScrollView(
 
-  children: [
-    Stack(
       children: [
-        //background [Blue SHAP]
-        ClipPath(
-          clipper: CustomClipPath(),
-          child: Container(
-            color: (Color.fromRGBO(36, 88, 101, 0.7)),
-            height: 350,
-          ),
-        ),
-        SizedBox(
-          height: 63.0,
-        ),
-
-        //ROW to Title [select category]
-        Row(
+        Stack(
           children: [
+            //background [Blue SHAP]
+            ClipPath(
+              clipper: CustomClipPath(),
+              child: Container(
+                color: (Color.fromRGBO(36, 88, 101, 0.7)),
+                height: 350,
+              ),
+            ),
+            SizedBox(
+              height: 63.0,
+            ),
+
+            //ROW to Title [select category]
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.fromLTRB(14, 300, 0, 10),
+                  child: const Text(
+                    'Select Category ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      //fontFamily:
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            //CONTAINER [SEARCH]
             Container(
-              padding: const EdgeInsets.fromLTRB(14, 300, 0, 10),
-              child: const Text(
-                'Select Category ',
-                style: TextStyle(
-                  fontSize: 20,
-                  //fontFamily:
+              padding: EdgeInsets.fromLTRB(20, 145, 20, 100),
+              child: Positioned(
+                left: 15,
+                right: 15,
+                // top: 1000,
+                //  bottom: 2000,
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromRGBO(255, 255, 255, 0.4),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0)),
+                    hintText: "search",
+                    prefixIcon: Icon(Icons.search),
+                    prefixIconColor: Colors.black,
+                  ),
                 ),
               ),
             ),
-          ],
-        ),
 
-        //CONTAINER [SEARCH]
-        Container(
-          padding: EdgeInsets.fromLTRB(20, 145, 20, 100),
-          child: Positioned(
-            left: 15,
-            right: 15,
-            // top: 1000,
-            //  bottom: 2000,
-            child: TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Color.fromRGBO(255, 255, 255, 0.4),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25.0)),
-                hintText: "search",
-                prefixIcon: Icon(Icons.search),
-                prefixIconColor: Colors.black,
-              ),
-            ),
-          ),
-        ),
-
-        //Tiltle [Select Your sessions]
-        Column(
-          children: const [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(30, 10, 0, 3),
-              child: Text(
-                'Select Your',
-                style: TextStyle(
-                    fontFamily: 'Fonts/ZillaSlab-Italic.ttf',
-                    fontSize: 32,
-                    fontStyle: FontStyle.normal,
-                    color: Color(0xffFFFFFF)),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-              child: Text(
-                'Session',
-                style: TextStyle(
-                  fontFamily: 'Fonts/ZillaSlab-Italic.ttf',
-                  fontSize: 32,
-                  fontStyle: FontStyle.normal,
-                  color: Color(0xffFFFFFF),
+            //Tiltle [Select Your sessions]
+            Column(
+              children: const [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 10, 0, 3),
+                  child: Text(
+                    'Select Your',
+                    style: TextStyle(
+                        fontFamily: 'Fonts/ZillaSlab-Italic.ttf',
+                        fontSize: 32,
+                        fontStyle: FontStyle.normal,
+                        color: Color(0xffFFFFFF)),
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                  child: Text(
+                    'Session',
+                    style: TextStyle(
+                      fontFamily: 'Fonts/ZillaSlab-Italic.ttf',
+                      fontSize: 32,
+                      fontStyle: FontStyle.normal,
+                      color: Color(0xffFFFFFF),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ],
-    ),
-  ],
-);
+    );
 
 //CARDS [SELECT Category]
-Widget homecardSection = SizedBox(
-  height: 240,
-  child: ListView(
-    scrollDirection: Axis.horizontal,
-    children: [
-      //card 1
-      SizedBox(
-        child: Card(
-          color: Color(0xff245865),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          child: const SizedBox(
-              width: 152,
-              height: 229,
-              child: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Text(
-                  'Therapist of Addiction',
-                  style: TextStyle(fontSize: 20, color: Color(0xffFFFFFF)),
+Widget homecardSection(BuildContext context) => SizedBox(
+      height: 240,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          //card 1
+          GestureDetector(onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SizedBox(
+                  child: Card(
+                    color: Color(0xff245865),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    child: SizedBox(
+                        width: 152,
+                        height: 229,
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Text(
+                            'Therapist of Addiction',
+                            style: TextStyle(
+                                fontSize: 20, color: Color(0xffFFFFFF)),
+                          ),
+                        )),
+                  ),
                 ),
-              )),
-        ),
-      ),
+              ),
+            );
+          }),
 
-      SizedBox(
-        child: Card(
-          color: Color(0xff245865),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
+          SizedBox(
+            child: Card(
+              color: Color(0xff245865),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              child: const SizedBox(
+                  width: 152,
+                  height: 229,
+                  child: Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text(
+                      'Nutrition Specialist',
+                      style: TextStyle(fontSize: 20, color: Color(0xffFFFFFF)),
+                    ),
+                  )),
+            ),
           ),
-          child: const SizedBox(
-              width: 152,
-              height: 229,
-              child: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Text(
-                  'Nutrition Specialist',
-                  style: TextStyle(fontSize: 20, color: Color(0xffFFFFFF)),
-                ),
-              )),
-        ),
-      ),
 
-      SizedBox(
-        child: Card(
-          color: Color(0xff245865),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
+          SizedBox(
+            child: Card(
+              color: Color(0xff245865),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0),
+              ),
+              child: const SizedBox(
+                  width: 152,
+                  height: 229,
+                  child: Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text(
+                      'Psycho Therapist',
+                      style: TextStyle(fontSize: 20, color: Color(0xffFFFFFF)),
+                    ),
+                  )),
+            ),
           ),
-          child: const SizedBox(
-              width: 152,
-              height: 229,
-              child: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Text(
-                  'Psycho Therapist',
-                  style: TextStyle(fontSize: 20, color: Color(0xffFFFFFF)),
-                ),
-              )),
-        ),
+        ],
       ),
-    ],
-  ),
-);
+    );
 // TILTE OF [DOCTOR TYPE]
 Widget hometextDrSection = Container(
   padding: const EdgeInsets.only(),
@@ -407,9 +415,9 @@ class _cardspageState extends State<cardspage> {
       drawer: const MyDarwer(),
       body: SingleChildScrollView(
         child: Column(children: [
-          homebackgroungsectoion,
+          homebackgroungsectoion(context),
           //hometitleSection,
-          homecardSection,
+          homecardSection(context),
           hometextDrSection,
           SizedBox(
             height: 240,

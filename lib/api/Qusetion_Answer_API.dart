@@ -12,7 +12,7 @@ import '../Models/post_response.dart';
 Future<Questionanswermodel?> getQuestionanswermodel() async {
   try {
     final response = await http.get(Uri.parse(
-        'http://154.53.58.222:8889/api/Question/GetQuestionAnswers')); //Question/GetQuestionAnswers
+        'http://154.53.58.222:8889/api/Question/GetQuestionAnswers')); //get question
 
     if (response.statusCode == 200) {
       // If the server did return
@@ -35,6 +35,7 @@ Future<void> registerUser(List<AnswerQModel> modelList) async {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
+      //BODY
       body: jsonEncode(<String, dynamic>{
         'questionId': model.questionId,
         'answerId': model.answerId,

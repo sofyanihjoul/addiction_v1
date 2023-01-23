@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffC6C7C9),
+      backgroundColor: Color(0xffFFFFFF),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(32, 0, 32, 15),
+                        padding: const EdgeInsets.fromLTRB(32, 30, 32, 15),
                         child: TextFormField(
                           //CHECK
                           validator: ((value) {
@@ -157,21 +157,12 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           'i don’t have account ? '
                           'Sign Up ',
-                          style: TextStyle(fontSize: 20),
+                          style:
+                              TextStyle(fontSize: 20, color: Color(0xff000000)),
                         ),
                       ),
 
                       //icon (Apple, google , facebook)
-                      Row(
-                        children: [
-                          Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
-                          Image.asset('images/applelogo.png'),
-                          Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
-                          Image.asset('images/gmaillogo.png'),
-                          Padding(padding: EdgeInsets.fromLTRB(30, 0, 40, 100)),
-                          Image.asset('images/facebooklogo.png'),
-                        ],
-                      )
                     ],
                   ),
 

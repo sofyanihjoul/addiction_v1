@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:addiction_app_v1/COMMON/constants.dart';
 import 'package:addiction_app_v1/Models/addiction_type_model.dart';
 import 'package:addiction_app_v1/Models/register_model.dart';

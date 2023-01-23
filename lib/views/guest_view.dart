@@ -50,6 +50,26 @@ class _guestPageState extends State<guestPage> {
                     ),
                   ),
                   Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 100, 0, 0),
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const signupPage()),
+                          );
+                        },
+                        //BACKSPACE
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(20, 0, 50, 0),
+                          child: Image.asset(
+                            'images/backspace.png',
+                            width: 40,
+                            height: 30,
+                          ),
+                        )),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.fromLTRB(15, 160, 93, 0),
                     child: Text(
                       'HELLO !',
