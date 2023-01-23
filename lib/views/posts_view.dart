@@ -70,7 +70,7 @@ class _PostsViewState extends State<PostsView> {
             setState(() {});
           }
         },
-        backgroundColor: Color.fromARGB(255, 27, 9, 51),
+        backgroundColor: Color(0xff245865),
         child: const Icon(Icons.add),
       ),
     );
@@ -85,6 +85,7 @@ class SendPost extends StatefulWidget {
   State<SendPost> createState() => _SendPostState();
 }
 
+//send post
 class _SendPostState extends State<SendPost> {
   bool isLoading = false;
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
@@ -192,7 +193,7 @@ class _SendPostState extends State<SendPost> {
                       borderRadius: BorderRadius.circular(20.0),
                       // width: 0.0 produces a thin "hairline" border
                       borderSide:
-                          const BorderSide(color: Colors.red, width: 0.0),
+                          const BorderSide(color: Colors.black, width: 0.0),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -204,27 +205,28 @@ class _SendPostState extends State<SendPost> {
                       borderRadius: BorderRadius.circular(20.0),
                       // width: 0.0 produces a thin "hairline" border
                       borderSide: const BorderSide(
-                          color: Color.fromARGB(255, 59, 255, 245), width: 2.2),
+                          color: Color(0xff245865), width: 2.2),
                     ),
                     border: const OutlineInputBorder(
                       borderSide: BorderSide(
                           color: Color.fromARGB(255, 18, 4, 70), width: 2.2),
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Color.fromARGB(213, 243, 237, 237),
                     labelStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
                     labelText: "Post Body",
                   ),
                 ),
               ),
             ),
-            //submit button
+
+            //SUBMIT BUTTON
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                   minimumSize: Size(w / 1.5, 70),
-                  backgroundColor: Color.fromARGB(255, 21, 0, 209), //#D1B000
+                  backgroundColor: Color(0xff245865), //#D1B000
                   elevation: 0,
                 ),
                 onPressed: () async {
